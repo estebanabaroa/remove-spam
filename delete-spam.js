@@ -46,6 +46,7 @@ const thousandYears = Math.round(Date.now() / 1000) + 60 * 60 * 24 * 365 * 1000
 const deleteSpam = async (address) => {
   const subplebbit = await plebbit.createSubplebbit({address})
   await addAdmin(subplebbit)
+  console.log('started deleting spam for', address)
   for (const post of subplebbit.posts.pages.hot?.comments || []) {
     if (isSpam(post)) {
       const commentModeration = await plebbit.createCommentModeration({
@@ -74,6 +75,7 @@ const deleteSpam = async (address) => {
       await challengeVerificationPromise
     }
   }
+  console.log('done deleting spam for', address)
   await removeAdmin(subplebbit)
 }
 
