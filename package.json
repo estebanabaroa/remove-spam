@@ -1,0 +1,16 @@
+{
+  "name": "remove-spam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@plebbit/plebbit-js": "https://github.com/plebbit/plebbit-js.git#49d31174f26ba9662f963324844cd6c145672717",
+    "dotenv": "^17.2.0"
+  }
+}
