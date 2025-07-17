@@ -4,7 +4,6 @@
 
 # go to current folder
 cd "$(dirname "$0")"
-cd ..
 
 # add env vars
 if [ -f .deploy-env ]; then
@@ -54,9 +53,10 @@ done
 
 SCRIPT="
 cd /home/remove-spam
-git clone https://github.com/estebanabaroa/remove-spam.git
-yarn
-RPC_URL=$RPC_URL node delete-spam
+# npm install
+# RPC_URL=$RPC_URL node delete-spam
+nohup bash -c 'RPC_URL=\"$RPC_URL\" node delete-spam' > delete-spam.log 2>&1 &
+tail -f delete-spam.log
 "
 
 echo "$SCRIPT" | sshpass -p "$DEPLOY_PASSWORD" ssh "$DEPLOY_USER"@"$DEPLOY_HOST"
